@@ -18,13 +18,13 @@ public class AudienceService {
         return audienceRepository.getAll();
     }
     public Optional<Audience> getLibrary(int id){
-        return audienceRepository.getLibrary(id);
+        return audienceRepository.getAudience(id);
     }
     public Audience save(Audience p){
         if(p.getId()==null){
             return audienceRepository.save(p);
         }else{
-            Optional<Audience> e = audienceRepository.getLibrary(p.getId());
+            Optional<Audience> e = audienceRepository.getAudience(p.getId());
             if(e.isPresent()){
                 return p;
             }else{
@@ -34,7 +34,7 @@ public class AudienceService {
     }
     public Audience update(Audience p){
         if(p.getId()!=null){
-            Optional<Audience> q = audienceRepository.getLibrary(p.getId());
+            Optional<Audience> q = audienceRepository.getAudience(p.getId());
             if(q.isPresent()){
                 if(p.getName()!=null){
                     q.get().setName(p.getName());
@@ -60,7 +60,7 @@ public class AudienceService {
     }
     public boolean delete(int id){
         boolean flag=false;
-        Optional<Audience>p= audienceRepository.getLibrary(id);
+        Optional<Audience>p= audienceRepository.getAudience(id);
         if(p.isPresent()){
             audienceRepository.delete(p.get());
             flag=true;

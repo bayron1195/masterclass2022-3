@@ -1,7 +1,7 @@
 package com.usa.misiontic.masterclass3.repository;
 
 import com.usa.misiontic.masterclass3.entities.Audience;
-import com.usa.misiontic.masterclass3.repository.crudRepository.LibraryCrudRepository;
+import com.usa.misiontic.masterclass3.repository.crudRepository.AudienceCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -11,20 +11,14 @@ import java.util.Optional;
 @Repository
 public class AudienceRepository {
     @Autowired
-    private LibraryCrudRepository libraryCrudRepository;
+    private AudienceRepository audienceCrudRepository;
 
-    public List<Audience> getAll(){
-        return (List<Audience>) libraryCrudRepository.findAll();
-    }
+    public List<Audience> getAll(){return (List<Audience>) audienceCrudRepository.findAll();}
 
-    public Optional<Audience> getLibrary(int id){
-        return libraryCrudRepository.findById(id);
-    }
-    public Audience save(Audience c){
-        return libraryCrudRepository.save(c);
-    }
+    public Optional<Audience> getAudience(int id){return audienceCrudRepository.findById(id);}
+    public Audience save(Audience c){return audienceCrudRepository.save(c);}
     public void delete(Audience c){
-        libraryCrudRepository.delete(c);
+        audienceCrudRepository.delete(c);
     }
 
 }
