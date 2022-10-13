@@ -1,8 +1,7 @@
 package com.usa.misiontic.masterclass3.service;
 
-import com.usa.misiontic.masterclass3.entities.Category;
-import com.usa.misiontic.masterclass3.entities.Library;
-import com.usa.misiontic.masterclass3.repository.LibraryRepository;
+import com.usa.misiontic.masterclass3.entities.Audience;
+import com.usa.misiontic.masterclass3.repository.AudienceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,32 +9,32 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class LibraryService {
+public class AudienceService {
 
     @Autowired
-    private LibraryRepository libraryRepository;
+    private AudienceRepository audienceRepository;
 
-    public List<Library> getAll(){
-        return libraryRepository.getAll();
+    public List<Audience> getAll(){
+        return audienceRepository.getAll();
     }
-    public Optional<Library> getLibrary(int id){
-        return libraryRepository.getLibrary(id);
+    public Optional<Audience> getLibrary(int id){
+        return audienceRepository.getAudience(id);
     }
-    public Library save(Library p){
+    public Audience save(Audience p){
         if(p.getId()==null){
-            return libraryRepository.save(p);
+            return audienceRepository.save(p);
         }else{
-            Optional<Library> e = libraryRepository.getLibrary(p.getId());
+            Optional<Audience> e = audienceRepository.getAudience(p.getId());
             if(e.isPresent()){
                 return p;
             }else{
-                return libraryRepository.save(p);
+                return audienceRepository.save(p);
             }
         }
     }
-    public Library update(Library p){
+    public Audience update(Audience p){
         if(p.getId()!=null){
-            Optional<Library> q = libraryRepository.getLibrary(p.getId());
+            Optional<Audience> q = audienceRepository.getAudience(p.getId());
             if(q.isPresent()){
                 if(p.getName()!=null){
                     q.get().setName(p.getName());
@@ -50,7 +49,7 @@ public class LibraryService {
                     q.get().setCategory(p.getCategory());
                 }
 
-                libraryRepository.save(q.get());
+                audienceRepository.save(q.get());
                 return q.get();
             }else{
                 return p;
@@ -61,9 +60,9 @@ public class LibraryService {
     }
     public boolean delete(int id){
         boolean flag=false;
-        Optional<Library>p= libraryRepository.getLibrary(id);
+        Optional<Audience>p= audienceRepository.getAudience(id);
         if(p.isPresent()){
-            libraryRepository.delete(p.get());
+            audienceRepository.delete(p.get());
             flag=true;
         }
         return flag;

@@ -6,8 +6,8 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "library")
-public class Library implements Serializable {
+@Table(name = "Audience")
+public class Audience implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,7 +17,7 @@ public class Library implements Serializable {
     private String description;
     @ManyToOne
     @JoinColumn(name = "categoryId")
-    @JsonIgnoreProperties("libs")
+    @JsonIgnoreProperties("l")
     private Category category;
 
     public Integer getId() {
