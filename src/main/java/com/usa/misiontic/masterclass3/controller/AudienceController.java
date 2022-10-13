@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/Audiencyyy")
+@RequestMapping("/api/Audience")
 public class AudienceController {
 
     @Autowired
-    private AudienceService audienceServicyyy;
+    private AudienceService audienceService;
 
     @GetMapping("/all")
     public List<Audience> getAll(){
