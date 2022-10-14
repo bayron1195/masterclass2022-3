@@ -1,7 +1,6 @@
 package com.usa.misiontic.masterclass3.service;
 
 import com.usa.misiontic.masterclass3.entities.Audience;
-import com.usa.misiontic.masterclass3.repository.AudienceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
